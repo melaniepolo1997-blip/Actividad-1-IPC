@@ -38,7 +38,7 @@ Este proyecto está enfocado para el análisis de ensayos antagonistas _in vitro
 - Investigación de sequencias de patógenos de viñedos
 
 ## Estructura del Proyecto
-</div>
+
 Carpetas organizadas por tipo de documentos:
 - Análisis estadísticos
 - Base de datos
@@ -46,5 +46,5 @@ Carpetas organizadas por tipo de documentos:
 
 
 ## Ejemplo de Análisis
-![Análisis de antagonismo entre Pseudomonas y Hongos](Rplot.jpeg)
+![Análisis de antagonismo entre Pseudomonas y Hongos](Imagenes/Rplot.jpeg)
 
