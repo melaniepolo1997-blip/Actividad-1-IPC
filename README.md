@@ -36,5 +36,5 @@ Carpetas organizadas por tipo de documentos:
 
 
 ## Ejemplo de Análisis
-![Análisis de antagonismo entre Pseudomonas y Hongos](Rplot.jpeg)
+![Análisis de antagonismo entre Pseudomonas y Hongos](Imagenes/Rplot.jpeg)
 
