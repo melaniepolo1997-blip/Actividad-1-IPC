@@ -32,7 +32,8 @@ Este proyecto está enfocado para el análisis de ensayos antagonistas _in vitro
 Carpetas organizadas por tipo de documentos:
 - Análisis estadísticos
 - Base de datos
-- Secuencias
+- Secuencias: Se encuentran las secuencias obtenidas del NCBI en formato .fasta para las especies analizadas en este proyecto. 
+
 
 ## Ejemplo de Análisis
 ![Análisis de antagonismo entre Pseudomonas y Hongos](images/resultado_antagonismo.png)
