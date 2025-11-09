@@ -18,15 +18,15 @@ Este proyecto está enfocado para el análisis de ensayos antagonistas _in vitro
 4. _Botrytis cinerea_
 
 ## Bases de datos
-1. _bacteria.csv
-2. _fungal_test.csv
+1. _bacteria.csv_
+2. _fungal_test.csv_
    
 ## Secuencias
-1. _Biochemical_test.R
+1. _Biochemical_test.R_
    
 ## Analisis estadístico
-1. _Antagonist_test_all_IR.R
-2. _Biochemical_test.R
+1. _Antagonist_test_all_IR.R_
+2. _Biochemical_test.R_
 ## Características de nuestro proyecto
 - Análisis estadístico que compara la actividad de biocontrol entre varias especies
 - Visualización rápida de resultados para saber las bacterias con potencial de control biológico
