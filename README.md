@@ -13,3 +13,14 @@
 2. _Fusarium graminearum_
 3. _Fusarium oxysporum_
 4. _Botrytis cinerea_
+
+## Bases de datos
+1. _bacteria.csv
+2. _fungal_test.csv
+   
+## Secuencias
+1. _Biochemical_test.R
+   
+## Analisis estadístico
+1. _Antagonist_test_all_IR.R
+2. _Biochemical_test.R
