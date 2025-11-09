@@ -78,8 +78,6 @@ remove(hsd)
 # oxysporum <- as.data.frame(HSD_results$groups)
 # remove(model, HSD_results, Foxysporum, tukey_results)
 # 
-# #---------------------------------------------------------
-# 
 # Botrytis_cinerea <- inhibition_rate %>% 
 #   filter(pathogen == 'Botrytis_cinerea')
 # model <- aov(IR ~ strains, data = Botrytis_cinerea)
@@ -119,4 +117,5 @@ ggplot(mean_all, aes(x = pathogen, y = mean_strains, fill = strains)) +
 
 remove(bact_table, fungal_table, 
        inhibition_rate, mean_all, anova_pathogen)
+
 
