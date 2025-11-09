@@ -1,7 +1,7 @@
 # Interacción entre bacterias _Pseudomonas_ y Patógenos de Viñedos
 ## Objetivo
 Este proyecto está enfocado para el análisis de ensayos antagonistas _in vitro_ entre bacterias beneficiosas _Pseudomonas_ y hongos y bacterias fitopatógenos. El proyecto trata de contribuir a la evaluación del potencial de biocontrol de las bacterias beneficiosas a través del análisis estadístico y genómico. 
-## Descripción de especias utilizadas:
+## Descripción de especias utilizadas.
 ### Especies de Bacterias beneficiosas:
 1. _Pseudomonas ekonensis_ COR58
 2. _Pseudomonas azadiae_ SWRI103
