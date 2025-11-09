@@ -1,3 +1,4 @@
+#Instalando paquetes
 #install.packages("ggplot2")  # If you haven't installed ggplot2
 #install.packages("dplyr")
 #install.packages("car")
@@ -121,5 +122,6 @@ mean_values_pho <- phosphate_solubilization %>%
     mean_strains = mean(index),
     sem_strains = sd(index) / sqrt(n())
   )
+
 
 
