@@ -44,12 +44,16 @@ anova_pathogen <- aov(IR ~ strains*pathogen,
                       data = inhibition_rate)
 anova_summary <- summary(anova_pathogen)
 
-# Results from ANOVA in a data frame
+#Results from ANOVA in a data frame
+#Comparar las medias de los grupos para determinar diferencias 
+#estadísticamente significativas entre ellos 
 anova_table <- anova_summary[[1]]
 anova_p <- as.data.frame(anova_table)
 remove(anova_table, anova_summary)
 
 #Tukey's Honestly Significant Difference test
+#Determina cuáles grupos son significativamente diferentes entre 
+#sí realizando comparaciones por pares
 hsd <- HSD.test(anova_pathogen,trt = c("strains", "pathogen"),
                 group=TRUE)
 groups <- as.data.frame(hsd$groups)
@@ -138,6 +142,7 @@ ggplot(mean_all, aes(x = pathogen, y = mean_strains, fill = strains)) +
 
 remove(bact_table, fungal_table, 
        inhibition_rate, mean_all, anova_pathogen)
+
 
 
 
