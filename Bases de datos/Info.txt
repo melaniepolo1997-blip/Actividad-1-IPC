@@ -1,8 +1,8 @@
-BASES DE DATOS: BACTERIAS Y HONGOS
-En esta carpeta se encuentra la base de datos de los patógenos a usar para el proyecto.
-Hay dos documentos, los cuales se encuentran en formato .csv 
-bacteria.csv 
-Contiene pruebas de antagonismo entre colonias de pseudomonas (STRAINS) y bacterias patógenas (PATHOGEN) para plata de uva. 
-Se obtiene un IR a partir de la resta del diametro del halo y el diametro de la colonia.
-fungal_test.csv 
-Contiene datos de la bacteria y el hongo a inhibir, así como el diámetro de la colonia y el IR. 
+BASES DE DATOS
+
+BACTERIAS Y HONGOS
+En esta carpeta se encuentra la base de datos de los patógenos a usar para el proyecto. Hay dos documentos, en formato .csv 
+
+1) bacteria.csv: contiene pruebas de antagonismo entre colonias de pseudomonas (STRAINS) y bacterias patógenas (PATHOGEN) para plata de uva. Se obtiene un IR a partir de la resta del diametro del halo y el diametro de la colonia.
+
+2) fungal_test.csv: contiene datos de la bacteria y el hongo a inhibir, así como el diámetro de la colonia y el IR. 
