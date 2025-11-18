@@ -44,12 +44,16 @@ anova_pathogen <- aov(IR ~ strains*pathogen,
                       data = inhibition_rate)
 anova_summary <- summary(anova_pathogen)
 
-# Results from ANOVA in a data frame
+#Results from ANOVA in a data frame
+#Comparar las medias de los grupos para determinar diferencias 
+#estadísticamente significativas entre ellos 
 anova_table <- anova_summary[[1]]
 anova_p <- as.data.frame(anova_table)
 remove(anova_table, anova_summary)
 
 #Tukey's Honestly Significant Difference test
+#Determina cuáles grupos son significativamente diferentes entre 
+#sí realizando comparaciones por pares
 hsd <- HSD.test(anova_pathogen,trt = c("strains", "pathogen"),
                 group=TRUE)
 groups <- as.data.frame(hsd$groups)
@@ -115,7 +119,30 @@ ggplot(mean_all, aes(x = pathogen, y = mean_strains, fill = strains)) +
   scale_fill_brewer(palette = "Set1")+
   theme(legend.position = "left")
 
+# Se propone estas modificaciones en el código para mejorar legibilidad y aporte visual
+library(ggplot2)
+
+ggplot(mean_all, aes(x = pathogen, y = mean_strains, fill = strains)) +
+  geom_bar(stat = "identity", position = position_dodge(), width = 0.7) +
+  geom_errorbar(aes(ymin = mean_strains - sem_strains, ymax = mean_strains + sem_strains),
+                position = position_dodge(0.7), width = 0.25) +
+  geom_text(aes(label = paste0(round(mean_strains, 1), "%"),
+                y = mean_strains + sem_strains + 2),
+            position = position_dodge(0.7), vjust = 0, size = 3.5, color = "black") +
+  theme_minimal(base_size = 14) +
+  labs(title = "Pathogen Inhibition Rate (IR)",
+       subtitle = "Mean inhibition percentage with SEM error bars",
+       x = "Phytopathogens",
+       y = "Inhibition (%)",
+       fill = "Strains") +
+  scale_fill_brewer(palette = "Set1") +
+  theme(legend.position = "top",
+        plot.title = element_text(face = "bold", hjust = 0.5),
+        plot.subtitle = element_text(hjust = 0.5))
+
 remove(bact_table, fungal_table, 
        inhibition_rate, mean_all, anova_pathogen)
+
+
 
 
