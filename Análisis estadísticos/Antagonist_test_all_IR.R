@@ -51,49 +51,46 @@ anova_table <- anova_summary[[1]]
 anova_p <- as.data.frame(anova_table)
 remove(anova_table, anova_summary)
 
-#Tukey's Honestly Significant Difference test
-#Determina cuáles grupos son significativamente diferentes entre 
-#sí realizando comparaciones por pares
-hsd <- HSD.test(anova_pathogen,trt = c("strains", "pathogen"),
-                group=TRUE)
-groups <- as.data.frame(hsd$groups)
-remove(hsd)
-#----------------------------------------------------------------
-
-# Fcolmorum <- inhibition_rate %>% filter(pathogen == 'Fusarium_colmorum')
-# model <- aov(IR ~ strains, data = Fcolmorum)
-# HSD_results <- HSD.test(model,trt = c("strains"),group=TRUE)
-# tukey_results <- TukeyHSD(model)
-# print(tukey_results$strains)
-# colmorum_p <- as.data.frame(tukey_results$strains)
-# colmorum <- as.data.frame(HSD_results$groups)
-# remove(model, HSD_results, Fcolmorum, tukey_results)
-# 
-# #--------------------------------------------------------
-# 
-# 
-# Foxysporum <- inhibition_rate %>% 
-# filter(pathogen == 'Fusarium_oxysporum')
-# model <- aov(IR ~ strains, data = Foxysporum)
-# HSD_results <- HSD.test(model,trt = c("strains"),group=TRUE)
-# tukey_results <- TukeyHSD(model)
-# print(tukey_results$strains)
-# oxysporum_p <- as.data.frame(tukey_results$strains)
-# oxysporum <- as.data.frame(HSD_results$groups)
-# remove(model, HSD_results, Foxysporum, tukey_results)
-# 
-# Botrytis_cinerea <- inhibition_rate %>% 
-#   filter(pathogen == 'Botrytis_cinerea')
-# model <- aov(IR ~ strains, data = Botrytis_cinerea)
-# HSD_results <- HSD.test(model,trt = c("strains"),group=TRUE)
-# tukey_results <- TukeyHSD(model)
-# print(tukey_results$strains)
-# cinerea_p <- as.data.frame(tukey_results$strains)
-# cinerea <- as.data.frame(HSD_results$groups)
-# remove(model, HSD_results, Botrytis_cinerea, tukey_results)
 
 #-----------------------------------------------------------
+# AUTOMATIZACIÓN – Tukey + HSD para cada patógeno
+#-----------------------------------------------------------
 
+pathogens <- unique(inhibition_rate$pathogen)
+
+tukey_results_list <- list()
+hsd_groups_list <- list()
+
+for(p in pathogens){
+  
+  # Subset de datos
+  data_sub <- inhibition_rate %>%
+    filter(pathogen == p)
+  
+  # ANOVA
+  model <- aov(IR ~ strains, data = data_sub)
+  
+  # Tukey HSD
+  tukey_res <- TukeyHSD(model)
+  tukey_df <- as.data.frame(tukey_res$strains)
+  tukey_df$comparison <- rownames(tukey_df)
+  
+  # HSD agricolae (letras)
+  hsd_res <- HSD.test(model, trt = "strains", group = TRUE)
+  hsd_df <- as.data.frame(hsd_res$groups)
+  hsd_df$strain <- rownames(hsd_df)
+  
+  # Guardar resultados
+  tukey_results_list[[p]] <- tukey_df
+  hsd_groups_list[[p]] <- hsd_df
+  
+}
+
+# Para inspeccionar:
+tukey_results_list     # Tukey por patógeno
+hsd_groups_list        # Letras de significancia por patógeno
+
+#-----------------------------------------------------------
 
 # Prepare data for plotting
 mean_all <- inhibition_rate %>%
@@ -101,7 +98,6 @@ mean_all <- inhibition_rate %>%
   summarize(
     mean_strains = mean(IR),
     sem_strains = sd(IR) / sqrt(n()))
-
 
 mean_all$letters <- c('bc', 'c', 'bc', 'b', 'a', 'bc', 'bc', 'bc', 'a', "bc")
 
@@ -142,6 +138,7 @@ ggplot(mean_all, aes(x = pathogen, y = mean_strains, fill = strains)) +
 
 remove(bact_table, fungal_table, 
        inhibition_rate, mean_all, anova_pathogen)
+
 
 
 
